@@ -6,7 +6,7 @@ $(document).ready(
       return array[Math.floor(Math.random() * (array.length))];
     } // end randomString
 
-    $("button").on("click", function() {
+    $("#joke, #quote").on("click", function() {
         var url = $(this).attr("id");
         $.get(url, function(response) {
             var resText;
@@ -21,6 +21,15 @@ $(document).ready(
           ); // end $.get
         // Display a random string in the array stringArray
         // $("#string").text(randomString(stringArray));
+      } // end function
+    ); // end .on
+
+    $("#getCat").on("click", function() { // on clicking the getCat button
+        $.get("cat", function(response) { // use jQuery $.get function with path cat
+            resText = "Name: " + response.name + " color: " + response.color // set response text to a variable
+            $("#ajax-text").text(resText); // change the ajax-text paragraph's text to resText
+          } // end function
+        ); // end .get
       } // end function
     ); // end .on
   } // end wrapper function

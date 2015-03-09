@@ -15,14 +15,16 @@ var jokes = [
     punchline: "Milk and quackers." }
 ]; // end jokes
 
+var cat = {
+  "name": "Pica",
+  "color": "tabby",
+  "age": 12,
+  "favoriteFood": "tuna"
+}; // end JSON cat
+
 function randomString(array) {
   return array[Math.floor(Math.random() * (array.length))];
 } // end randomString
-
-app.get("/joke", function(req, res) {
-  res.json(randomString(jokes));
-  } // end function
-); // end .get
 
 // first parameter of .get is the endpoint, second is a function
 app.get("/", function(req, res) { // first parameter of the function is a request, second is response
@@ -34,6 +36,16 @@ app.get("/", function(req, res) { // first parameter of the function is a reques
 app.get("/quote", function(req, res) { // first parameter of the function is a request, second is response
     console.log("Someone visited quote");
     res.send(randomString(quotes));
+  } // end function
+); // end .get
+
+app.get("/joke", function(req, res) {
+  res.json(randomString(jokes));
+  } // end function
+); // end .get
+
+app.get("/cat", function(req, res) {
+    res.json(cat);
   } // end function
 ); // end .get
 
