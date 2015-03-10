@@ -10,13 +10,11 @@ $(document).ready(
       // POST request
       // first argument: route name, second argument: data being sent
       // third argument: callback function
-      $.post("piglatin", name, function (response) {
+      $.post("piglatin", name, function(response) {
         var piglatinified = response.firstname + " " + response.lastname;
         $("#piglatinified").text(piglatinified);
         console.log(name);
       });
     });
-
-
   } // end wrapper function
 ); // end .ready
