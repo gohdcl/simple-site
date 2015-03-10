@@ -14,7 +14,7 @@ $(document).ready(
         var piglatinified = response.firstname + " " + response.lastname;
         $("#piglatinified").text(piglatinified);
         console.log(name);
-      });
-    });
+      }); // end .post
+    }); // end .on
   } // end wrapper function
 ); // end .ready
