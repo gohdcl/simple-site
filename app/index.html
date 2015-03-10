@@ -4,12 +4,16 @@
     <title>Random String Generator</title>
   </head>
   <body>
-    <h1>Random String Generator</h1>
-    <button id="quote">Generate a Quote!</button>
-    <button id="joke">Generate a Joke!</button>
-    <button id="getCat">Get a Cat!</button>
-    <p id="ajax-text"></p>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" type="text/javascript"></script>
+    <h1>Piglatinify Your Name!</h1>
+    <form id="piglatin">
+      <label>First Name</label><input type="text" name="firstname">
+      <label>Last Name</label><input type="text" name="lastname">
+      <input type="submit" value="Piglatinify It">
+    </form>
+    <p>Your name in pig latin is:</p>
+    <p id="piglatinified"></p>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" type="text/javascript"></script>
     <script src="script.js" type="text/javascript"></script>
   </body>
 </html>

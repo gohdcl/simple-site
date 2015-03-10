@@ -1,36 +1,22 @@
 $(document).ready(
   function() {
-    var stringArray = [ "You get a cat!", "You get a dog!", "You get a bird!", "You get a penguin!" ];
+    $("#piglatin").on("submit", function(e) {
+      e.preventDefault(); // keeps jQuery from refreshing the page after submission
 
-    function randomString(array) {
-      return array[Math.floor(Math.random() * (array.length))];
-    } // end randomString
+      var firstname = $("input[name=firstname]").val();
+      var lastname = $("input[name=lastname]").val();
+      var name = { firstname: firstname, lastname: lastname };
 
-    $("#joke, #quote").on("click", function() {
-        var url = $(this).attr("id");
-        $.get(url, function(response) {
-            var resText;
+      // POST request
+      // first argument: route name, second argument: data being sent
+      // third argument: callback function
+      $.post("piglatin", name, function (response) {
+        var piglatinified = response.firstname + " " + response.lastname;
+        $("#piglatinified").text(piglatinified);
+        console.log(name);
+      });
+    });
 
-            if (typeof response === "object") {
-              resText = response.setup + " : " + response.punchline;
-            } /* end if */ else {
-              resText = response;
-            } // end else
-             $("#ajax-text").text(resText);
-            } // end function
-          ); // end $.get
-        // Display a random string in the array stringArray
-        // $("#string").text(randomString(stringArray));
-      } // end function
-    ); // end .on
 
-    $("#getCat").on("click", function() { // on clicking the getCat button
-        $.get("cat", function(response) { // use jQuery $.get function with path cat
-            resText = "Name: " + response.name + " color: " + response.color // set response text to a variable
-            $("#ajax-text").text(resText); // change the ajax-text paragraph's text to resText
-          } // end function
-        ); // end .get
-      } // end function
-    ); // end .on
   } // end wrapper function
 ); // end .ready
