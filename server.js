@@ -15,9 +15,15 @@ app.get("/", function(req, res) { // first parameter of the function is a reques
   } // end function
 ); // end .get
 
-app.get("/random-generator", function(req, res) {
+app.get("/joke", function(req, res) {
+  var joke = randomGenerator();
+  res.json(joke);
+}); // end .get
 
-}) // end .get
+app.get("/quotes", function(req, res) {
+  var quote = randomGenerator();
+  res.
+});
 
 app.post("/piglatin", function(req, res) {
   var firstname = piglatinify(req.body.firstname);
