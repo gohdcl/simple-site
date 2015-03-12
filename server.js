@@ -16,12 +16,12 @@ app.get("/", function(req, res) { // first parameter of the function is a reques
 ); // end .get
 
 app.get("/joke", function(req, res) {
-  var joke = randomGenerator();
+  var joke = randomGenerator().randomString(jokes);
   res.json(joke);
 }); // end .get
 
 app.get("/quotes", function(req, res) {
-  var quote = randomGenerator();
+  var quote = randomGenerator().randomString(quotes);
   res.
 });
 
