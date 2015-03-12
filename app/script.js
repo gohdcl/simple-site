@@ -16,5 +16,17 @@ $(document).ready(
         console.log(name);
       }); // end .post
     }); // end .on
+
+    $.("#joke #quote").on("click", function() {
+      var url = $(this).attr("id");
+      $.get(url, function(response) {
+        var responseText;
+        if (typeof response === "object") {
+          responseText = response.setup + " : " + response.punchline;
+        } /* end if */ else {
+          responseText = response;
+        } // end else
+      }) // end .get
+    }); // end .on
   } // end wrapper function
 ); // end .ready
