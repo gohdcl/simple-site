@@ -1,6 +1,8 @@
 var express = require("express"); // import express (which is a function) from node_modules
 var bodyparser = require("body-parser");
 var piglatinify = require("./lib/piglatinify.js");
+var jokes = require("./lib/jokes.js");
+var quotes = require("./lib/quotes.js");
 var randomGenerator = require("./lib/randomGenerator.js");
 var app = express(); // express() returns an object that has the functionality to create a server
 var port = process.env.PORT || 3000;
@@ -16,13 +18,13 @@ app.get("/", function(req, res) { // first parameter of the function is a reques
 ); // end .get
 
 app.get("/joke", function(req, res) {
-  var joke = randomGenerator().randomString(jokes);
+  var joke = randomGenerator(jokes);
   res.json(joke);
 }); // end .get
 
-app.get("/quotes", function(req, res) {
-  var quote = randomGenerator().randomString(quotes);
-  res.
+app.get("/quote", function(req, res) {
+  var quote = randomGenerator(quotes);
+  res.send(quote);
 });
 
 app.post("/piglatin", function(req, res) {
