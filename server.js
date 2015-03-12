@@ -1,6 +1,7 @@
 var express = require("express"); // import express (which is a function) from node_modules
 var bodyparser = require("body-parser");
 var piglatinify = require("./lib/piglatinify.js");
+var randomGenerator = require("./lib/randomGenerator.js");
 var app = express(); // express() returns an object that has the functionality to create a server
 var port = process.env.PORT || 3000;
 
@@ -13,6 +14,10 @@ app.get("/", function(req, res) { // first parameter of the function is a reques
     res.sendFile("index.html");
   } // end function
 ); // end .get
+
+app.get("/random-generator", function(req, res) {
+
+}) // end .get
 
 app.post("/piglatin", function(req, res) {
   var firstname = piglatinify(req.body.firstname);
