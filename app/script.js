@@ -13,11 +13,10 @@ $(document).ready(
       $.post("piglatin", name, function(response) {
         var piglatinified = response.firstname + " " + response.lastname;
         $("#piglatinified").text(piglatinified);
-        console.log(name);
       }); // end .post
     }); // end .on
 
-    $.("#joke #quote").on("click", function() {
+    $("#joke, #quote").on("click", function() {
       var url = $(this).attr("id");
       $.get(url, function(response) {
         var responseText;
@@ -26,7 +25,14 @@ $(document).ready(
         } /* end if */ else {
           responseText = response;
         } // end else
-      }) // end .get
+        $("#ajax-text").text(responseText);
+      }); // end .get
+    }); // end .on
+
+    $("#cat").on("click", function() {
+      $.get("cat", function(response) {
+        $("#ajax-text").text("Name: " + response.name + " Color: " + response.color);
+      }); // end .get
     }); // end .on
   } // end wrapper function
 ); // end .ready

@@ -3,7 +3,7 @@ var bodyparser = require("body-parser");
 var piglatinify = require("./lib/piglatinify.js");
 var jokes = require("./lib/jokes.js");
 var quotes = require("./lib/quotes.js");
-var randomGenerator = require("./lib/randomGenerator.js");
+var cat = require("./lib/cat.js");
 var app = express(); // express() returns an object that has the functionality to create a server
 var port = process.env.PORT || 3000;
 
@@ -18,19 +18,22 @@ app.get("/", function(req, res) { // first parameter of the function is a reques
 ); // end .get
 
 app.get("/joke", function(req, res) {
-  var joke = randomGenerator(jokes());
+  var joke = jokes();
   res.json(joke);
 }); // end .get
 
 app.get("/quote", function(req, res) {
-  var quote = randomGenerator(quotes());
+  var quote = quotes();
   res.send(quote);
-});
+}); // end .get
+
+app.get("/cat", function(req, res) {
+  res.json(cat());
+}); // end .get
 
 app.post("/piglatin", function(req, res) {
   var firstname = piglatinify(req.body.firstname);
   var lastname = piglatinify(req.body.lastname);
-  console.log(req.body.firstname);
   var piglatined = { firstname: firstname, lastname: lastname };
   res.json(piglatined);
 });
