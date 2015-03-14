@@ -4,6 +4,7 @@ var piglatinify = require("./lib/piglatinify.js");
 var jokes = require("./lib/jokes.js");
 var quotes = require("./lib/quotes.js");
 var cat = require("./lib/cat.js");
+var catify = require("./lib/catify.js");
 var app = express(); // express() returns an object that has the functionality to create a server
 var port = process.env.PORT || 3000;
 
@@ -36,7 +37,12 @@ app.post("/piglatin", function(req, res) {
   var lastname = piglatinify(req.body.lastname);
   var piglatined = { firstname: firstname, lastname: lastname };
   res.json(piglatined);
-});
+}); // end .post
+
+app.post("/append-cat", function(req, res) {
+  var sentence = catify(req.body.userInput);
+  res.send(sentence);
+}); // end .post
 
 // listen should be the last instruction in server.js
 app.listen(port, function() {

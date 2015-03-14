@@ -16,6 +16,16 @@ $(document).ready(
       }); // end .post
     }); // end .on
 
+    $("#append-cat").on("submit", function(e){
+      e.preventDefault();
+      var userInput = $("input[name=catstring]").val();
+      var jsonSentence = { userInput: userInput };
+
+      $.post("append-cat", jsonSentence, function(response) {
+        $("#catified").text(response);
+      }); // end .post
+    }); // end .on
+
     $("#joke, #quote").on("click", function() {
       var url = $(this).attr("id");
       $.get(url, function(response) {
