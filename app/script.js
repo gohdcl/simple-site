@@ -16,7 +16,7 @@ $(document).ready(
       }); // end .post
     }); // end .on
 
-    $("#append-cat").on("submit", function(e){
+    $("#append-cat").on("submit", function(e) {
       e.preventDefault();
       var userInput = $("input[name=catstring]").val();
       var jsonSentence = { userInput: userInput };
